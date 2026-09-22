@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真空压缩袋 · 法国 & 德国 · 用户任务地图与新品方案</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #f5f7fc;
+            padding: 2.5rem 2rem;
+            color: #1a2639;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        /* header */
+        .header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a3b5d, #2c5f8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #4f5e71;
+            font-size: 1.05rem;
+            border-bottom: 2px solid #d0ddeb;
+            padding-bottom: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .flag-tag {
+            display: inline-block;
+            background: #1e3a5f;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-left: 0.6rem;
+            vertical-align: middle;
+        }
+        /* section headers */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #1a2b3e;
+            border-left: 6px solid #2c6e9c;
+            padding-left: 1rem;
+        }
+        .section-title i {
+            color: #2c6e9c;
+            font-size: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 20, 40, 0.06);
+            padding: 1.8rem 1.8rem 2rem 1.8rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(0, 20, 40, 0.1);
+        }
+        /* table style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.9rem 0.8rem;
+            background: #eef4fa;
+            font-weight: 600;
+            color: #1f3a57;
+            border-bottom: 2px solid #cdddec;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        td {
+            padding: 0.9rem 0.8rem;
+            border-bottom: 1px solid #e4ecf5;
+            vertical-align: top;
+            line-height: 1.5;
+            color: #1f2a3f;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .badge {
+            display: inline-block;
+            background: #d9e9f7;
+            color: #1a4d7a;
+            font-weight: 500;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.3rem;
+            white-space: nowrap;
+        }
+        .badge-priority-high {
+            background: #fddfd4;
+            color: #b13e2b;
+        }
+        .badge-priority-mid {
+            background: #fff2cf;
+            color: #9e6d1a;
+        }
+        .badge-priority-low {
+            background: #deedd9;
+            color: #2d6e3b;
+        }
+        .badge-pump {
+            background: #e3e0fa;
+            color: #4b3b8c;
+        }
+        .text-muted {
+            color: #66788c;
+            font-size: 0.8rem;
+        }
+        .task-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #1a4d7a;
+            color: white;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.6rem;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+        /* mini chart bar for visual comparison */
+        .chart-bar-group {
+            margin-top: 1.2rem;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .chart-label {
+            width: 90px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2b4b6e;
+        }
+        .chart-bar-container {
+            flex: 1;
+            height: 26px;
+            background: #e3eaf2;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+        }
+        .chart-bar-fr {
+            background: #2c6e9c;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .chart-bar-de {
+            background: #7aa5c7;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .chart-legend {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .legend-color-fr {
+            width: 14px;
+            height: 14px;
+            background: #2c6e9c;
+            border-radius: 4px;
+        }
+        .legend-color-de {
+            width: 14px;
+            height: 14px;
+            background: #7aa5c7;
+            border-radius: 4px;
+        }
+        .footnote {
+            font-size: 0.75rem;
+            color: #7a8b9f;
+            margin-top: 1.5rem;
+            border-top: 1px solid #dce5ef;
+            padding-top: 1rem;
+            text-align: center;
+        }
+        .value-highlight {
+            font-weight: 600;
+            color: #1a4d7a;
+        }
+        .small-note {
+            font-size: 0.7rem;
+            color: #7e90a5;
+            margin-left: 0.3rem;
+            font-weight: 400;
+        }
+        @media (max-width: 1000px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1.5rem 1rem;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 0.6rem 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>真空压缩袋 · 用户任务地图 & 新品开发方案</h1>
+        <p>法国站 & 德国站 · 基于评论数据与任务视角的重新分析</p>
+    </div>
+
+    <!-- 1. 用户任务地图 -->
+    <div class="section-title">
+        <i class="fas fa-map-marked-alt"></i> 1. 用户任务地图
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:12%">任务</th>
+                    <th style="width:16%">Who (谁)</th>
+                    <th style="width:20%">Situation (场景)</th>
+                    <th style="width:22%">Job to be Done (要完成什么)</th>
+                    <th style="width:30%">核心决策标准</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="task-icon">A</span> 旅行打包</td>
+                    <td>度假旅行者、商务出差、邮轮游客、留学生</td>
+                    <td>登机箱/背包出行，回程行李增多；酒店无吸尘器；长途旅行需重新压缩</td>
+                    <td>在有限行李箱空间内装下最多衣物，不超重、不超尺寸，旅途中密封可靠</td>
+                    <td>小尺寸(登机箱适配) · 无线泵(酒店无吸尘器) · 便携轻巧 · 可重复使用 · 密封可靠 · 充电一次够用</td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon">B</span> 换季收纳</td>
+                    <td>家庭住户、城市公寓住户</td>
+                    <td>冬夏衣物轮换；被褥/羽绒服长期存放；衣柜空间不足；客用床品占地方</td>
+                    <td>长期节省衣柜/床底空间，防尘防螨，保持衣物干净无异味</td>
+                    <td>大尺寸(适配被褥) · 密封持久(≥3个月) · 可叠放 · 透明可视 · 材质厚实 · BPA-free(安全)</td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon">C</span> 搬家搬运</td>
+                    <td>搬家者、学生宿舍搬迁</td>
+                    <td>搬家前打包；减少搬运体积；纸箱装不下大件被褥</td>
+                    <td>快速压缩大件物品，减少搬运体积，保护物品在运输中不损坏</td>
+                    <td>大尺寸(100×80cm+) · 结实抗撕裂 · 兼容吸尘器(快速) · 可反复使用 · 密封可靠</td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon">D</span> 防潮防虫</td>
+                    <td>地下室/车库/阁楼存放者、潮湿地区住户</td>
+                    <td>衣物长期存放在潮湿/有虫环境；换季取出时发霉/虫蛀；露营装备过冬</td>
+                    <td>保护衣物免受湿气、虫蛀、霉变，保持衣物干净无异味</td>
+                    <td>密封性(100%气密) · 材质安全无异味 · 防潮防霉 · 加厚材质 · 长期存放不失效</td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon">E</span> 母婴收纳</td>
+                    <td>有新生儿的家庭、儿童衣物家庭</td>
+                    <td>婴儿衣物分类存放；儿童衣物更新快，需频繁收纳；防尘防螨</td>
+                    <td>分类存放婴儿/儿童衣物，防尘防潮，方便取用</td>
+                    <td>小尺寸 · 材质安全无异味 · 透明可视 · 密封可靠 · 可重复使用</td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon">F</span> 临时应急</td>
+                    <td>偶尔用一次的用户、预算敏感者</td>
+                    <td>偶尔需要压缩一次；不确定效果，先买便宜的试试</td>
+                    <td>用最低成本完成一次压缩，能用就行</td>
+                    <td>价格低 · 基础功能(不漏气) · 数量少 · 不需要额外配件</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2. 任务-配置匹配矩阵 -->
+    <div class="section-title">
+        <i class="fas fa-table"></i> 2. 任务-配置匹配矩阵
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:12%">用户任务</th>
+                    <th style="width:10%">最合适数量</th>
+                    <th style="width:22%">最合适尺寸</th>
+                    <th style="width:18%">最合适材质</th>
+                    <th style="width:18%">最合适泵类型</th>
+                    <th style="width:12%">建议价格带</th>
+                    <th style="width:8%">优先级</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="task-icon" style="background:#b13e2b;">A</span> 旅行打包</td>
+                    <td>8-12个</td>
+                    <td>小/中 (40×60、50×60cm为主，含1-2个大号)</td>
+                    <td>PA+PE，80-100μm (便携)</td>
+                    <td><span class="badge badge-pump">无线电动泵</span></td>
+                    <td>15-20€ (FR) / 18-22€ (DE)</td>
+                    <td><span class="badge badge-priority-high">最高</span></td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon" style="background:#b13e2b;">B</span> 换季收纳</td>
+                    <td>10-15个</td>
+                    <td>大/特大 (80×60、100×80cm为主)</td>
+                    <td>PA+PE加厚，100μm+，BPA-free</td>
+                    <td>无泵/手泵 (家用)</td>
+                    <td>18-25€ (FR) / 15-22€ (DE)</td>
+                    <td><span class="badge badge-priority-high">最高</span></td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon" style="background:#9e6d1a;">C</span> 搬家搬运</td>
+                    <td>5-8个</td>
+                    <td>大/特大 (100×80cm以上)</td>
+                    <td>PA+PE加厚，抗撕裂强化</td>
+                    <td>兼容吸尘器 + 可选配手泵</td>
+                    <td>13-18€ (FR) / 12-16€ (DE)</td>
+                    <td><span class="badge badge-priority-mid">中高</span></td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon" style="background:#9e6d1a;">D</span> 防潮防虫</td>
+                    <td>8-10个</td>
+                    <td>中/大组合</td>
+                    <td>PA+PE加厚，无异味，BPA-free</td>
+                    <td>无泵</td>
+                    <td>15-22€ (FR) / 15-22€ (DE)</td>
+                    <td><span class="badge badge-priority-mid">中</span></td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon" style="background:#2d6e3b;">E</span> 母婴收纳</td>
+                    <td>8-10个</td>
+                    <td>小/中 (40×50、40×60cm为主)</td>
+                    <td>PA+PE，安全无异味，BPA-free</td>
+                    <td>无线泵/手泵</td>
+                    <td>15-18€ (FR) / 15-18€ (DE)</td>
+                    <td><span class="badge badge-priority-low">低</span></td>
+                </tr>
+                <tr>
+                    <td><span class="task-icon" style="background:#2d6e3b;">F</span> 临时应急</td>
+                    <td>5个以下</td>
+                    <td>任意</td>
+                    <td>基础PA+PE</td>
+                    <td>无泵/手泵</td>
+                    <td>6-12€ (FR) / 6-10€ (DE)</td>
+                    <td><span class="badge badge-priority-low">低</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 小型对比图: 法国 vs 德国 价格带差异 -->
+        <div style="margin-top: 2rem;">
+            <div class="flex-between">
+                <h4 style="font-size: 0.95rem; font-weight: 600; color: #1a3b5d; letter-spacing: 0.3px;">
+                    <i class="fas fa-chart-simple" style="margin-right: 6px;"></i> 价格带偏好对比 (法国 vs 德国)
+                </h4>
+                <div class="chart-legend">
+                    <div class="legend-item"><span class="legend-color-fr"></span> 法国站</div>
+                    <div class="legend-item"><span class="legend-color-de"></span> 德国站</div>
+                </div>
+            </div>
+            <div class="chart-bar-group">
+                <div class="chart-row">
+                    <span class="chart-label">旅行款</span>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fr" style="width: 65%;">15-20€</div>
+                        <div class="chart-bar-de" style="width: 75%; background: #7aa5c7;">18-22€</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">收纳款</span>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fr" style="width: 80%;">18-25€</div>
+                        <div class="chart-bar-de" style="width: 65%; background: #7aa5c7;">15-22€</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <span class="chart-label">搬家款</span>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fr" style="width: 55%;">13-18€</div>
+                        <div class="chart-bar-de" style="width: 50%; background: #7aa5c7;">12-16€</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 最佳新品开发方案 -->
+    <div class="section-title">
+        <i class="fas fa-lightbulb"></i> 3. 最佳新品开发方案
+    </div>
+
+    <!-- 方案一 最高优先级 -->
+    <div class="card" style="border-left: 6px solid #b13e2b;">
+        <div class="flex-between" style="margin-bottom: 1rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 600;">
+                <i class="fas fa-star" style="color: #b13e2b; margin-right: 8px;"></i> 方案一 · 旅行+换季双场景 (最高优先级)
+            </h3>
+            <span class="badge badge-priority-high" style="font-size: 0.8rem; padding: 0.3rem 1rem;">推荐主力</span>
+        </div>
+        <div class="grid-2">
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">配置要素</th><th>具体方案</th></tr>
+                    <tr><td>数量</td><td><span class="value-highlight">10个装</span> (覆盖旅行+换季双任务)</td></tr>
+                    <tr><td>尺寸组合</td><td><span class="value-highlight">3种尺寸</span>：4×50×60cm + 3×70×50cm + 3×100×80cm</td></tr>
+                    <tr><td>材质</td><td>PA+PE复合材料，厚度<span class="value-highlight">100μm</span>，<span class="badge">BPA-free</span></td></tr>
+                    <tr><td>泵</td><td><span class="badge badge-pump">无线电动泵</span> USB-C充电，吸力≥-60kPa，单次充电≥50袋</td></tr>
+                    <tr><td>颜色</td><td>透明+蓝色阀门/封口</td></tr>
+                    <tr><td>定价</td><td><span class="value-highlight">18-22€ (DE)</span> / 20-25€ (FR)</td></tr>
+                    <tr><td>目标星级</td><td>4.4-4.5分</td></tr>
+                </table>
+            </div>
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">评估维度</th><th>结论</th></tr>
+                    <tr><td>核心卖点</td><td>“旅行+换季双场景，无线泵+多尺寸，密封持久，BPA-free”</td></tr>
+                    <tr><td>解决痛点</td><td>泵吸力不足 · 小尺寸缺失 · 密封不持久</td></tr>
+                    <tr><td>供应链可行性</td><td>✅ 现有供应商可做 (PA+PE+无线泵+BPA-free)</td></tr>
+                    <tr><td>利润空间</td><td>采购成本约6.10€，毛利率 <span class="value-highlight">66-72%</span></td></tr>
+                    <tr><td>依据</td><td>评论中高频任务A+B；现有产品B0DWFJ7ZP7最接近但存在泵吸力与小尺寸痛点</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 方案二 第二优先级 -->
+    <div class="card" style="border-left: 6px solid #9e6d1a;">
+        <div class="flex-between" style="margin-bottom: 1rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 600;">
+                <i class="fas fa-truck-moving" style="color: #9e6d1a; margin-right: 8px;"></i> 方案二 · 搬家专用 (第二优先级)
+            </h3>
+            <span class="badge badge-priority-mid" style="font-size: 0.8rem; padding: 0.3rem 1rem;">利润补充</span>
+        </div>
+        <div class="grid-2">
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">配置要素</th><th>具体方案</th></tr>
+                    <tr><td>数量</td><td><span class="value-highlight">6个装</span> (搬家任务适中)</td></tr>
+                    <tr><td>尺寸组合</td><td><span class="value-highlight">2种尺寸</span>：4×100×80cm + 2×80×60cm</td></tr>
+                    <tr><td>材质</td><td>PA+PE加厚，<span class="value-highlight">110μm+</span>，抗撕裂强化</td></tr>
+                    <tr><td>泵</td><td>兼容吸尘器 + 可选配手泵</td></tr>
+                    <tr><td>颜色</td><td>透明+蓝色阀门/封口</td></tr>
+                    <tr><td>定价</td><td><span class="value-highlight">13-16€ (DE)</span> / 15-18€ (FR)</td></tr>
+                    <tr><td>目标星级</td><td>4.3-4.4分</td></tr>
+                </table>
+            </div>
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">评估维度</th><th>结论</th></tr>
+                    <tr><td>核心卖点</td><td>“搬家神器，超厚抗撕裂，兼容所有吸尘器”</td></tr>
+                    <tr><td>解决痛点</td><td>运输中破损 · 密封不持久</td></tr>
+                    <tr><td>供应链可行性</td><td>✅ 现有供应商可做 (加厚PA+PE)</td></tr>
+                    <tr><td>利润空间</td><td>采购成本约5.5-6.5€，毛利率 <span class="value-highlight">58-65%</span></td></tr>
+                    <tr><td>依据</td><td>评论中搬家任务高频；用户对“抗撕裂”和“兼容吸尘器”有明确需求</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 方案三 差异化补充 -->
+    <div class="card" style="border-left: 6px solid #2d6e3b;">
+        <div class="flex-between" style="margin-bottom: 1rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 600;">
+                <i class="fas fa-shield-alt" style="color: #2d6e3b; margin-right: 8px;"></i> 方案三 · 防潮防虫+母婴 (差异化补充)
+            </h3>
+            <span class="badge badge-priority-low" style="font-size: 0.8rem; padding: 0.3rem 1rem;">细分机会</span>
+        </div>
+        <div class="grid-2">
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">配置要素</th><th>具体方案</th></tr>
+                    <tr><td>数量</td><td><span class="value-highlight">8个装</span> (防潮+母婴双任务)</td></tr>
+                    <tr><td>尺寸组合</td><td><span class="value-highlight">2种尺寸</span>：4×40×50cm + 4×60×80cm</td></tr>
+                    <tr><td>材质</td><td>PA+PE加厚，<span class="value-highlight">无异味</span>，<span class="badge">BPA-free</span></td></tr>
+                    <tr><td>泵</td><td>无线泵/手泵可选</td></tr>
+                    <tr><td>颜色</td><td>透明+蓝色阀门/封口</td></tr>
+                    <tr><td>定价</td><td><span class="value-highlight">15-18€ (DE)</span> / 16-20€ (FR)</td></tr>
+                    <tr><td>目标星级</td><td>4.5分</td></tr>
+                </table>
+            </div>
+            <div>
+                <table style="font-size: 0.85rem;">
+                    <tr><th style="width:30%">评估维度</th><th>结论</th></tr>
+                    <tr><td>核心卖点</td><td>“食品级安全材质，BPA-free，无异味，防潮防虫防霉”</td></tr>
+                    <tr><td>解决痛点</td><td>异味 · 母婴安全 · 防霉</td></tr>
+                    <tr><td>供应链可行性</td><td>✅ 现有供应商可做 (需确认无异味+BPA-free材料)</td></tr>
+                    <tr><td>利润空间</td><td>采购成本约5-6€，毛利率 <span class="value-highlight">63-70%</span></td></tr>
+                    <tr><td>依据</td><td>德国站NORDIC评论明确提及BPA-free并愿支付溢价；母婴/防潮场景有明确需求</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 方案对比总览 -->
+    <div class="card" style="background: #f0f6fd;">
+        <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; color: #1a3b5d;">
+            <i class="fas fa-scale-balanced" style="margin-right: 6px;"></i> 方案对比总览
+        </h4>
+        <table style="background: white; border-radius: 16px; overflow: hidden;">
+            <thead>
+                <tr><th>对比维度</th><th>方案一 (A+B)</th><th>方案二 (C)</th><th>方案三 (D+E)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>覆盖任务</td><td>旅行+换季</td><td>搬家</td><td>防潮+母婴</td></tr>
+                <tr><td>数量</td><td>10个</td><td>6个</td><td>8个</td></tr>
+                <tr><td>尺寸组合</td><td>3种</td><td>2种</td><td>2种</td></tr>
+                <tr><td>泵</td><td>无线泵</td><td>兼容吸尘器+手泵</td><td>无线泵/手泵</td></tr>
+                <tr><td>定价 (DE)</td><td>18-22€</td><td>13-16€</td><td>15-18€</td></tr>
+                <tr><td>毛利率</td><td><span class="value-highlight">66-72%</span></td><td>58-65%</td><td>63-70%</td></tr>
+                <tr><td>优先级</td><td><span class="badge badge-priority-high">最高</span></td><td><span class="badge badge-priority-mid">中高</span></td><td><span class="badge badge-priority-low">补充</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 总结区 -->
+    <div class="card" style="background: #1a2b3e; color: white; border-radius: 24px;">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <i class="fas fa-quote-left" style="font-size: 1.8rem; color: #7aa5c7; opacity: 0.6;"></i>
+            <div>
+                <p style="font-size: 1rem; line-height: 1.6; font-weight: 400;">
+                    <span style="font-weight: 600; color: #b6d4f0;">最终结论：</span> 
+                    从用户任务出发，德国站与法国站最值得投入的新品开发方案是 
+                    <span style="background: #2c6e9c; padding: 0.15rem 0.6rem; border-radius: 20px; font-weight: 500;">方案一</span> 
+                    —— 10个装 + 3种尺寸（含登机箱小尺寸）+ 无线泵（吸力≥-60kPa+续航≥50袋）+ PA+PE加厚 + BPA-free，定价18-22€（德国）/ 20-25€（法国），覆盖“旅行打包”与“换季收纳”两大最高频任务。
+                </p>
+                <p style="font-size: 0.9rem; margin-top: 1rem; color: #cbdae9;">
+                    <i class="fas fa-check-circle" style="color: #7aa5c7; margin-right: 5px;"></i> 不做“市场上卖得最好的配置”，做“最能解决高优先级用户任务、供应链可控、利润空间合理的配置”。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footnote">
+        <i class="fas fa-database" style="margin-right: 5px;"></i> 基于法国站 & 德国站评论数据 · 用户任务视角分析 · 仅供参考
+    </div>
+</div>
+</body>
+</html>
