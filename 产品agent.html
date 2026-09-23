@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品调研 Agent 框架 · 基于真空袋调研的方法论沉淀</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #f5f7fc;
+            padding: 2.5rem 2rem;
+            color: #1a2639;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* 头部 */
+        .header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a3b5d, #2c5f8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #4f5e71;
+            font-size: 1.05rem;
+            border-bottom: 2px solid #d0ddeb;
+            padding-bottom: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* 章节标题 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #1a2b3e;
+            border-left: 6px solid #2c6e9c;
+            padding-left: 1rem;
+        }
+        .section-title i {
+            color: #2c6e9c;
+            font-size: 1.5rem;
+        }
+        .section-subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #1f3a57;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-subtitle i {
+            color: #2c6e9c;
+            font-size: 1.1rem;
+        }
+        /* 卡片 */
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 20, 40, 0.06);
+            padding: 1.8rem 1.8rem 2rem 1.8rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(0, 20, 40, 0.1);
+        }
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.9rem 0.8rem;
+            background: #eef4fa;
+            font-weight: 600;
+            color: #1f3a57;
+            border-bottom: 2px solid #cdddec;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        td {
+            padding: 0.9rem 0.8rem;
+            border-bottom: 1px solid #e4ecf5;
+            vertical-align: top;
+            line-height: 1.5;
+            color: #1f2a3f;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        /* 标记 */
+        .badge {
+            display: inline-block;
+            background: #d9e9f7;
+            color: #1a4d7a;
+            font-weight: 500;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.3rem;
+            white-space: nowrap;
+        }
+        .badge-red {
+            background: #fddfd4;
+            color: #b13e2b;
+        }
+        .badge-orange {
+            background: #fff2cf;
+            color: #9e6d1a;
+        }
+        .badge-green {
+            background: #deedd9;
+            color: #2d6e3b;
+        }
+        .badge-blue {
+            background: #e3e0fa;
+            color: #4b3b8c;
+        }
+        .text-muted {
+            color: #66788c;
+            font-size: 0.8rem;
+        }
+        .value-highlight {
+            font-weight: 600;
+            color: #1a4d7a;
+        }
+        /* 图标圆 */
+        .module-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #1a4d7a;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.6rem;
+        }
+        /* 网格 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+        /* 流程图 */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 1.5rem 0;
+        }
+        .flow-node {
+            background: #eef4fa;
+            padding: 0.7rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #1a4d7a;
+            font-size: 0.9rem;
+            border: 2px solid #cdddec;
+            white-space: nowrap;
+        }
+        .flow-arrow {
+            color: #7aa5c7;
+            font-size: 1.2rem;
+        }
+        /* 高亮块 */
+        .highlight-box {
+            background: #f0f6fd;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2c6e9c;
+        }
+        .highlight-box p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #1f2a3f;
+        }
+        /* 编号列表 */
+        .num-list {
+            list-style: none;
+            counter-reset: num;
+        }
+        .num-list li {
+            counter-increment: num;
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        .num-list li::before {
+            content: counter(num);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: #1a4d7a;
+            color: white;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footnote {
+            font-size: 0.75rem;
+            color: #7a8b9f;
+            margin-top: 1.5rem;
+            border-top: 1px solid #dce5ef;
+            padding-top: 1rem;
+            text-align: center;
+        }
+        @media (max-width: 1000px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1.5rem 1rem;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 0.6rem 0.4rem;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .flow {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 头部 -->
+    <div class="header">
+        <h1>产品调研 Agent 框架</h1>
+        <p>基于真空袋调研的方法论沉淀 · 从数据采集到产品落地方案</p>
+    </div>
+
+    <!-- 〇 概述 -->
+    <div class="card" style="background: #1a2b3e; color: white; border-radius: 24px;">
+        <div style="display: flex; gap: 1.2rem; align-items: flex-start;">
+            <i class="fas fa-bullseye" style="font-size: 2rem; color: #7aa5c7; opacity: 0.7;"></i>
+            <div>
+                <p style="font-size: 1.05rem; line-height: 1.7; font-weight: 400;">
+                    把一次具体的真空袋调研，抽象成一套<span style="font-weight: 600; color: #b6d4f0;">可复用的产品调研方法论</span>，最终交给 IT 开发成一个 Agent。
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 0.8rem; color: #cbdae9;">
+                    只聚焦产品端：<strong style="color: #fff;">人群、场景、任务、配置、外观、材质</strong>。不考虑利润、供应链可行性、认证成本。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 一、Agent 总体架构 -->
+    <div class="section-title">
+        <i class="fas fa-sitemap"></i> 一、Agent 总体架构
+    </div>
+    <div class="card">
+        <p style="font-size: 0.95rem; color: #4f5e71; margin-bottom: 1.2rem;">
+            整个 Agent 分为 <strong>5 个模块</strong>，按顺序执行，每个模块都有明确的输入、处理逻辑和输出。
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:8%">模块</th>
+                    <th style="width:18%">名称</th>
+                    <th style="width:40%">核心任务</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="module-icon">M1</span></td><td>数据采集</td><td>从电商平台、评论、竞品页面获取结构化 + 非结构化数据</td></tr>
+                <tr><td><span class="module-icon">M2</span></td><td>数据清洗</td><td>把脏数据整理成可分析的规范表</td></tr>
+                <tr><td><span class="module-icon">M3</span></td><td>用户任务挖掘</td><td>从评论和搜索词中提炼用户任务地图</td></tr>
+                <tr><td><span class="module-icon">M4</span></td><td>任务-配置匹配</td><td>把用户任务映射到具体产品配置</td></tr>
+                <tr><td><span class="module-icon">M5</span></td><td>产品落地方案生成</td><td>输出可直接交付的产品定义文档</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 二、M1 数据采集 -->
+    <div class="section-title">
+        <i class="fas fa-database"></i> 二、M1 数据采集
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-list-ul"></i> 2.1 需要采集的数据类型</div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:14%">数据类型</th>
+                    <th style="width:30%">具体内容</th>
+                    <th style="width:20%">来源</th>
+                    <th style="width:36%">用途</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>产品列表数据</td><td>ASIN、标题、品牌、价格、评分、BSR排名、BuyBox类型</td><td>卖家精灵 / Helium10 / 平台前台</td><td>建立竞品全貌</td></tr>
+                <tr><td>产品配置数据</td><td>数量、尺寸组合、材质、厚度、泵类型、颜色、密封方式</td><td>详情页 + 五点描述 + A+页面</td><td>拆解配置维度</td></tr>
+                <tr><td>销量数据</td><td>月销量、月销售额、历史趋势</td><td>卖家精灵 / 平台数据</td><td>判断市场热度与趋势</td></tr>
+                <tr><td>评论数据</td><td>好评 + 差评全文、星级、时间、国家</td><td>平台评论页 / 卖家精灵导出</td><td>挖掘用户任务与痛点</td></tr>
+                <tr><td>搜索词数据</td><td>核心关键词、长尾词、搜索量</td><td>品牌分析 / 卖家精灵</td><td>识别用户显性需求</td></tr>
+                <tr><td>视觉数据</td><td>主图、场景图、颜色、包装</td><td>详情页</td><td>外观与配色偏好</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <div class="section-subtitle"><i class="fas fa-flag"></i> 2.2 采集优先级</div>
+            <div class="card">
+                <table>
+                    <thead><tr><th>优先级</th><th>数据</th><th>理由</th></tr></thead>
+                    <tbody>
+                        <tr><td><span class="badge badge-red">P0</span></td><td>产品配置 + 评论</td><td>没有这两个，后面所有分析都做不了</td></tr>
+                        <tr><td><span class="badge badge-orange">P1</span></td><td>销量 + 价格</td><td>判断市场验证程度</td></tr>
+                        <tr><td><span class="badge badge-blue">P2</span></td><td>搜索词 + 视觉</td><td>补充需求和外观维度</td></tr>
+                        <tr><td><span class="badge badge-green">P3</span></td><td>历史趋势</td><td>判断增长方向</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="section-subtitle"><i class="fas fa-hashtag"></i> 2.3 采集数量建议</div>
+            <div class="card">
+                <ul class="num-list">
+                    <li><strong>产品列表</strong>：目标市场 TOP 50-100</li>
+                    <li><strong>评论</strong>：至少覆盖 3-5 款主力竞品，每款好评 + 差评各 50 条以上</li>
+                    <li><strong>搜索词</strong>：核心词 + 长尾词，覆盖 30-50 个</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 三、M2 数据清洗 -->
+    <div class="section-title">
+        <i class="fas fa-filter"></i> 三、M2 数据清洗
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-check-double"></i> 3.1 清洗规则</div>
+    <div class="card">
+        <table>
+            <thead><tr><th style="width:20%">清洗项</th><th style="width:40%">规则</th><th style="width:40%">示例</th></tr></thead>
+            <tbody>
+                <tr><td>剔除无效记录</td><td>颜色为空、数量缺失、尺寸缺失的产品直接剔除</td><td>颜色空白 → 不是真空袋</td></tr>
+                <tr><td>数量标准化</td><td>统一为阿拉伯数字</td><td>“5件” → 5；“3XL+2L” → 5</td></tr>
+                <tr><td>尺寸标准化</td><td>统一为“长×宽 cm”格式，相近尺寸合并</td><td>“80x60”和“80×61”归为一类</td></tr>
+                <tr><td>材质标准化</td><td>统一为 PA+PE / PE+PA / PE / 其他</td><td>“聚酰胺+聚乙烯” → PA+PE</td></tr>
+                <tr><td>泵类型标准化</td><td>无线泵 / 有线泵 / 手泵 / 无泵</td><td>“电动泵”“电动抽气泵” → 电动泵</td></tr>
+                <tr><td>颜色标准化</td><td>透明+蓝 / 透明+黑 / 纯透明 / 其他</td><td>“透明袋身+蓝色阀门” → 透明+蓝</td></tr>
+                <tr><td>评论去重</td><td>同一用户重复评论只保留一条</td><td>—</td></tr>
+                <tr><td>评论语言标注</td><td>标注每条评论的语言</td><td>便于分市场分析</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-table"></i> 3.2 输出标准表结构</div>
+    <div class="grid-2">
+        <div class="card">
+            <p style="font-weight:600; font-size:0.95rem; margin-bottom:0.8rem; color:#1a4d7a;">产品表</p>
+            <table>
+                <thead><tr><th>字段</th><th>说明</th></tr></thead>
+                <tbody>
+                    <tr><td>ASIN</td><td>唯一标识</td></tr>
+                    <tr><td>品牌</td><td>—</td></tr>
+                    <tr><td>数量</td><td>标准化后的数字</td></tr>
+                    <tr><td>尺寸组合</td><td>如“3×40×50 + 3×40×60 + 3×50×60”</td></tr>
+                    <tr><td>材质</td><td>PA+PE / PE+PA / 其他</td></tr>
+                    <tr><td>厚度</td><td>如“100μm”</td></tr>
+                    <tr><td>泵类型</td><td>无线泵 / 有线泵 / 手泵 / 无泵</td></tr>
+                    <tr><td>颜色</td><td>透明+蓝 / 透明+黑 / 纯透明 / 其他</td></tr>
+                    <tr><td>价格 / 评分 / 月销量 / 月销售额</td><td>—</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <p style="font-weight:600; font-size:0.95rem; margin-bottom:0.8rem; color:#1a4d7a;">评论表</p>
+            <table>
+                <thead><tr><th>字段</th><th>说明</th></tr></thead>
+                <tbody>
+                    <tr><td>ASIN</td><td>对应产品</td></tr>
+                    <tr><td>星级</td><td>1-5</td></tr>
+                    <tr><td>评论内容</td><td>原文</td></tr>
+                    <tr><td>语言</td><td>法语 / 德语 / 意大利语 / 西班牙语 / 英语</td></tr>
+                    <tr><td>时间</td><td>—</td></tr>
+                    <tr><td>评论类型</td><td>好评 / 差评</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 四、M3 用户任务挖掘 -->
+    <div class="section-title">
+        <i class="fas fa-user-check"></i> 四、M3 用户任务挖掘
+    </div>
+
+    <div class="highlight-box">
+        <p><i class="fas fa-quote-left" style="color:#2c6e9c; margin-right:8px;"></i> <strong>这一步要回答的核心问题：</strong>“用户到底雇这个产品去完成什么任务？”</p>
+        <p style="margin-top:0.5rem; color:#3d5a7a;">不是问“产品卖得好不好”，而是问：谁在什么场景下用？要解决什么问题？最在意什么决策标准？</p>
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-cogs"></i> 4.1 挖掘方法</div>
+    <div class="card">
+        <table>
+            <thead><tr><th style="width:8%">步骤</th><th style="width:50%">方法</th><th style="width:42%">输出</th></tr></thead>
+            <tbody>
+                <tr><td><span class="badge">1</span></td><td>把评论按场景分类</td><td>识别出 5-8 类核心任务</td></tr>
+                <tr><td><span class="badge">2</span></td><td>每类任务提取 Who / Situation / Job to be Done</td><td>用户任务地图</td></tr>
+                <tr><td><span class="badge">3</span></td><td>从评论中提取每类任务的核心决策标准</td><td>决策标准清单</td></tr>
+                <tr><td><span class="badge">4</span></td><td>从搜索词中验证任务优先级</td><td>任务优先级排序</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-map"></i> 4.2 用户任务地图模板</div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr><th style="width:14%">任务</th><th style="width:16%">Who</th><th style="width:20%">Situation</th><th style="width:22%">Job to be Done</th><th style="width:28%">核心决策标准</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="badge badge-red">A</span> 旅行打包</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+                <tr><td><span class="badge badge-red">B</span> 换季收纳</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+                <tr><td colspan="5" style="text-align:center; color:#7a8b9f; font-style:italic;">…</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-sort-amount-up"></i> 4.3 任务优先级判断</div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr><th>判断维度</th><th style="color:#b13e2b;">高优先级</th><th style="color:#9e6d1a;">中优先级</th><th style="color:#2d6e3b;">低优先级</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>评论提及频率</td><td>高频出现</td><td>中频</td><td>低频</td></tr>
+                <tr><td>搜索词匹配度</td><td>核心词命中</td><td>长尾词命中</td><td>无匹配</td></tr>
+                <tr><td>痛点严重度</td><td>差评率 &gt;30%</td><td>15-30%</td><td>&lt;15%</td></tr>
+                <tr><td>市场验证</td><td>已有爆款</td><td>有产品但无爆款</td><td>无产品</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 五、M4 任务-配置匹配 -->
+    <div class="section-title">
+        <i class="fas fa-puzzle-piece"></i> 五、M4 任务-配置匹配
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-link"></i> 5.1 匹配逻辑</div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr><th style="width:16%">任务</th><th style="width:14%">数量</th><th style="width:20%">尺寸</th><th style="width:18%">材质</th><th style="width:16%">泵</th><th style="width:16%">价格带</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="badge badge-red">A</span> 旅行打包</td><td>8-12个</td><td>小/中为主</td><td>80-100μm</td><td>无线泵</td><td>15-22€</td></tr>
+                <tr><td><span class="badge badge-red">B</span> 换季收纳</td><td>10-15个</td><td>大/特大为主</td><td>100μm+</td><td>无泵/手泵</td><td>15-25€</td></tr>
+                <tr><td colspan="6" style="text-align:center; color:#7a8b9f; font-style:italic;">…</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-search"></i> 5.2 匹配依据来源</div>
+    <div class="card">
+        <table>
+            <thead><tr><th style="width:20%">配置维度</th><th style="width:80%">依据</th></tr></thead>
+            <tbody>
+                <tr><td>数量</td><td>评论中用户提到的“够用/不够用”；销量增长最快的数量区间</td></tr>
+                <tr><td>尺寸</td><td>评论中“装不下/太小/太大”；搜索词中的尺寸关键词</td></tr>
+                <tr><td>材质</td><td>评论中“太薄/易破/厚实”；销量最高的材质类型</td></tr>
+                <tr><td>泵</td><td>评论中“泵太弱/无线方便/手泵累”；搜索词中的泵关键词</td></tr>
+                <tr><td>价格带</td><td>评论中“太贵/性价比高”；销量最集中的价格区间</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 六、M5 产品落地方案生成 -->
+    <div class="section-title">
+        <i class="fas fa-file-signature"></i> 六、M5 产品落地方案生成
+    </div>
+
+    <div class="section-subtitle"><i class="fas fa-file-alt"></i> 6.1 输出文档结构</div>
+    <div class="card">
+        <p style="font-size:0.95rem; color:#4f5e71; margin-bottom:1.2rem;">每份产品落地方案必须包含以下 <strong>8 个部分</strong>：</p>
+        <div class="grid-2">
+            <div>
+                <ul class="num-list">
+                    <li><strong>目标人群</strong>：主要人群画像、次要人群画像、人群规模判断（高/中/低）</li>
+                    <li><strong>核心使用场景</strong>：主要场景、次要场景、场景优先级</li>
+                    <li><strong>要解决的核心问题</strong>：用户任务、当前痛点（来自差评）、解决程度承诺</li>
+                    <li><strong>产品具体配置</strong>：数量、尺寸组合（每个尺寸的数量）、材质（类型 + 厚度）、泵类型、密封方式、其他功能特性</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="num-list">
+                    <li><strong>外观设计</strong>：配色方案、透明度设计（全透明/半透明/双面设计）、印刷设计、包装形式</li>
+                    <li><strong>目标性能指标</strong>：密封持久性（承诺天数）、泵吸力（kPa）、泵续航（单次充电可抽袋数）、抗撕裂等级、可重复使用次数</li>
+                    <li><strong>目标星级与差异化卖点</strong>：目标星级、核心卖点（3条以内）、差异化定位</li>
+                    <li><strong>对标竞品</strong>：对标 ASIN、对标配置、我们的差异化点</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 七、Agent 的思考维度清单 -->
+    <div class="section-title">
+        <i class="fas fa-brain"></i> 七、Agent 的思考维度清单（给 AI 的提示词框架）
+    </div>
+    <div class="card">
+        <p style="font-size:0.95rem; color:#4f5e71; margin-bottom:1.2rem;">
+            当 Agent 分析一个新品类的产品时，必须依次思考以下维度：
+        </p>
+        <div class="grid-3">
+            <div>
+                <p style="font-weight:600; font-size:0.9rem; color:#1a4d7a; margin-bottom:0.6rem;"><i class="fas fa-database"></i> 数据层</p>
+                <ul class="num-list" style="counter-reset: num 0;">
+                    <li>这个品类的核心配置维度有哪些？</li>
+                    <li>哪些维度是用户最敏感的？</li>
+                    <li>哪些维度是市场同质化的？</li>
+                    <li>哪些维度存在差异化空间？</li>
+                </ul>
+            </div>
+            <div>
+                <p style="font-weight:600; font-size:0.9rem; color:#1a4d7a; margin-bottom:0.6rem;"><i class="fas fa-user-check"></i> 任务层</p>
+                <ul class="num-list" style="counter-reset: num 4;">
+                    <li>用户买这个产品是为了完成什么任务？</li>
+                    <li>有几类不同的任务？优先级如何？</li>
+                    <li>每类任务的决策标准是什么？</li>
+                    <li>哪些任务已被满足？哪些存在缺口？</li>
+                </ul>
+            </div>
+            <div>
+                <p style="font-weight:600; font-size:0.9rem; color:#1a4d7a; margin-bottom:0.6rem;"><i class="fas fa-puzzle-piece"></i> 配置层</p>
+                <ul class="num-list" style="counter-reset: num 8;">
+                    <li>每类任务对应的最优配置是什么？</li>
+                    <li>哪些配置组合在市场上是空白的？</li>
+                    <li>哪些配置组合销量最好但差评最多？</li>
+                    <li>哪些配置组合销量一般但好评率极高？</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top:1.2rem;">
+            <p style="font-weight:600; font-size:0.9rem; color:#1a4d7a; margin-bottom:0.6rem;"><i class="fas fa-rocket"></i> 落地层</p>
+            <ul class="num-list" style="counter-reset: num 12;">
+                <li>最适合优先开发的配置是什么？</li>
+                <li>这个配置对应的人群、场景、任务是什么？</li>
+                <li>这个配置的外观、材质、性能细节是什么？</li>
+                <li>这个配置和现有竞品的差异点是什么？</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 八、Agent 执行流程 -->
+    <div class="section-title">
+        <i class="fas fa-project-diagram"></i> 八、Agent 执行流程（IT 开发参考）
+    </div>
+    <div class="card">
+        <div class="flow">
+            <span class="flow-node"><i class="fas fa-sign-in-alt"></i> 输入：品类名称 + 目标市场</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#d9e9f7;">M1 数据采集</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#d9e9f7;">M2 数据清洗</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#d9e9f7;">M3 用户任务挖掘</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#d9e9f7;">M4 任务-配置匹配</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#d9e9f7;">M5 产品落地方案生成</span>
+            <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+            <span class="flow-node" style="background:#1a4d7a; color:white;">输出：产品落地方案</span>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <div class="section-subtitle"><i class="fas fa-file-export"></i> 8.1 每个模块的输出格式</div>
+            <div class="card">
+                <table>
+                    <thead><tr><th>模块</th><th>输出格式</th></tr></thead>
+                    <tbody>
+                        <tr><td>M1</td><td>Excel / CSV</td></tr>
+                        <tr><td>M2</td><td>标准化 Excel / CSV</td></tr>
+                        <tr><td>M3</td><td>表格 + 文字说明</td></tr>
+                        <tr><td>M4</td><td>表格</td></tr>
+                        <tr><td>M5</td><td>Word / HTML 文档</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="section-subtitle"><i class="fas fa-user-cog"></i> 8.2 需要人工介入的节点</div>
+            <div class="card">
+                <table>
+                    <thead><tr><th>节点</th><th>为什么需要人工</th></tr></thead>
+                    <tbody>
+                        <tr><td>M1 数据采集</td><td>平台反爬、数据源选择</td></tr>
+                        <tr><td>M3 任务挖掘</td><td>AI 可能误判任务类型，需人工校验</td></tr>
+                        <tr><td>M5 方案生成</td><td>最终方案需人工审核合理性</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 九、真空袋案例参考 -->
+    <div class="section-title">
+        <i class="fas fa-box-open"></i> 九、真空袋案例作为参考样本
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr><th style="width:8%">模块</th><th style="width:92%">真空袋的产出</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="module-icon">M1</span></td><td>法国站 TOP100 + 德国站 TOP80；评论覆盖 5 款主力竞品</td></tr>
+                <tr><td><span class="module-icon">M2</span></td><td>剔除颜色空白后，法国 82 条、德国 68 条有效产品</td></tr>
+                <tr><td><span class="module-icon">M3</span></td><td>识别出 6 类用户任务：旅行、换季、搬家、防潮、母婴、应急</td></tr>
+                <tr><td><span class="module-icon">M4</span></td><td>输出任务-配置矩阵：旅行款 8-12 个 + 无线泵；收纳款 10-15 个 + 大尺寸</td></tr>
+                <tr><td><span class="module-icon">M5</span></td><td>输出 3 个方案：方案一旅行+换季、方案二搬家、方案三防潮+母婴</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 十、核心原则 -->
+    <div class="section-title">
+        <i class="fas fa-gem"></i> 十、这套框架的核心原则
+    </div>
+    <div class="card">
+        <div class="grid-2">
+            <div>
+                <ul class="num-list">
+                    <li><strong>从用户任务出发，不从产品出发</strong>：先问“用户雇它干什么”，再问“该做什么产品”。</li>
+                    <li><strong>数据是证据，不是答案</strong>：销量、评论、搜索词都是用户任务留下的痕迹。</li>
+                    <li><strong>配置是任务的解，不是参数的堆</strong>：每个配置维度都要对应一个任务需求。</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="num-list" style="counter-reset: num 3;">
+                    <li><strong>外观是决策的一部分</strong>：配色、透明度、印刷都影响用户购买决策。</li>
+                    <li><strong>可复用、可迭代</strong>：每次调研都是一次方法论的验证和优化。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 十一、交付给 IT 的开发建议 -->
+    <div class="section-title">
+        <i class="fas fa-code"></i> 十一、交付给 IT 的 Agent 开发建议
+    </div>
+    <div class="card">
+        <table>
+            <thead><tr><th style="width:20%">开发模块</th><th style="width:80%">技术要点</th></tr></thead>
+            <tbody>
+                <tr><td>数据采集</td><td>对接卖家精灵 API / 爬虫；支持多平台多站点</td></tr>
+                <tr><td>数据清洗</td><td>规则引擎 + AI 辅助标准化</td></tr>
+                <tr><td>任务挖掘</td><td>NLP 情感分析 + 场景分类模型</td></tr>
+                <tr><td>配置匹配</td><td>规则引擎 + 优先级排序算法</td></tr>
+                <tr><td>方案生成</td><td>模板引擎 + LLM 生成</td></tr>
+                <tr><td>人工校验</td><td>提供可视化界面，支持人工修正</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 底部 -->
+    <div class="card" style="background: #1a2b3e; color: white; border-radius: 24px; text-align: center;">
+        <p style="font-size: 1rem; line-height: 1.7;">
+            <i class="fas fa-check-circle" style="color: #7aa5c7; margin-right: 8px;"></i>
+            这份框架可以直接作为产品 Agent 的开发需求文档。<br>
+            <span style="color: #b6d4f0;">真空袋案例作为第一个验证样本，验证通过后，可复用到任何新品类。</span>
+        </p>
+    </div>
+
+    <div class="footnote">
+        <i class="fas fa-file-code" style="margin-right: 5px;"></i> 产品调研 Agent 框架 · 基于真空袋调研的方法论沉淀 · 供 IT 开发参考
+    </div>
+
+</div>
+</body>
+</html>
