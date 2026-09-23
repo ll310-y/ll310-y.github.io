@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真空压缩袋 · 法国 & 德国 · 详细落地方案</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #f5f7fc;
+            padding: 2rem 1.5rem;
+            color: #1a2639;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        /* 头部 */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a3b5d, #2c5f8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.4rem;
+        }
+        .header p {
+            color: #4f5e71;
+            font-size: 1rem;
+            border-bottom: 2px solid #d0ddeb;
+            padding-bottom: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 站点切换 */
+        .site-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .site-tab {
+            background: white;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4f5e71;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.05);
+            transition: all 0.2s ease;
+        }
+        .site-tab i {
+            margin-right: 0.5rem;
+        }
+        .site-tab.active {
+            background: #1a3b5d;
+            color: white;
+            box-shadow: 0 8px 24px rgba(26, 59, 93, 0.3);
+        }
+        .site-tab:hover:not(.active) {
+            background: #eef4fa;
+        }
+
+        /* 方案卡片容器 */
+        .plans-wrapper {
+            display: none;
+        }
+        .plans-wrapper.active {
+            display: block;
+        }
+
+        /* 方案切换标签 */
+        .plan-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .plan-tab {
+            background: white;
+            border: 2px solid #dce5ef;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f3a57;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 20, 40, 0.03);
+        }
+        .plan-tab .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: #d9e9f7;
+            color: #1a4d7a;
+            padding: 0.15rem 0.6rem;
+            border-radius: 30px;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+        .plan-tab.active {
+            background: #2c6e9c;
+            color: white;
+            border-color: #2c6e9c;
+        }
+        .plan-tab.active .tag {
+            background: rgba(255,255,255,0.25);
+            color: white;
+        }
+
+        /* 方案详情 */
+        .plan-detail {
+            display: none;
+        }
+        .plan-detail.active {
+            display: block;
+        }
+
+        /* 卡片 */
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 20, 40, 0.06);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eef4fa;
+        }
+        .card-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a2b3e;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card-header h3 i {
+            color: #2c6e9c;
+        }
+        .priority-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+        }
+        .priority-high {
+            background: #fddfd4;
+            color: #b13e2b;
+        }
+        .priority-mid {
+            background: #fff2cf;
+            color: #9e6d1a;
+        }
+        .priority-low {
+            background: #deedd9;
+            color: #2d6e3b;
+        }
+
+        /* 详情网格 */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .detail-section {
+            margin-bottom: 0.5rem;
+        }
+        .detail-section h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2c6e9c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .detail-section h4 i {
+            font-size: 0.85rem;
+        }
+        .detail-item {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f4f9;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            width: 110px;
+            flex-shrink: 0;
+            color: #66788c;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .detail-value {
+            flex: 1;
+            color: #1f2a3f;
+        }
+        .detail-value strong {
+            color: #1a4d7a;
+        }
+        .detail-value .unit {
+            color: #7a8b9f;
+            font-weight: 400;
+            font-size: 0.85rem;
+        }
+        .data-support {
+            background: #f8fafd;
+            border-left: 3px solid #7aa5c7;
+            padding: 0.6rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.82rem;
+            color: #3d5a7a;
+            line-height: 1.6;
+        }
+        .data-support i {
+            color: #2c6e9c;
+            margin-right: 0.3rem;
+        }
+        .reason-box {
+            background: #f0f6fd;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #1f3a57;
+            line-height: 1.7;
+        }
+        .reason-box i {
+            color: #2c6e9c;
+            margin-right: 0.4rem;
+        }
+
+        /* 尺寸表格 */
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 0.5rem;
+        }
+        .size-table th {
+            background: #eef4fa;
+            padding: 0.5rem 0.6rem;
+            text-align: left;
+            font-weight: 600;
+            color: #1f3a57;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .size-table td {
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid #e4ecf5;
+            color: #1f2a3f;
+        }
+        .size-table tr:last-child td {
+            border-bottom: none;
+        }
+        .size-table .qty {
+            font-weight: 600;
+            color: #1a4d7a;
+        }
+
+        /* 颜色预览 */
+        .color-preview {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .color-swatch {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 2px solid #dce5ef;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            position: relative;
+        }
+        .color-swatch .label {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            color: #66788c;
+            white-space: nowrap;
+        }
+        .color-text {
+            font-size: 0.85rem;
+            color: #3d5a7a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1100px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 800px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .site-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .plan-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .detail-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .detail-label {
+                width: auto;
+            }
+        }
+        .footnote {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7a8b9f;
+            margin-top: 2rem;
+            border-top: 1px solid #dce5ef;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>真空压缩袋 · 详细产品落地方案</h1>
+        <p>法国站 & 德国站 · 每个市场 3 个方案 · 含具体尺寸/数量/颜色/印刷/封口/厚度/材质及数据支撑</p>
+    </div>
+
+    <!-- 站点切换 -->
+    <div class="site-tabs">
+        <button class="site-tab active" data-site="fr">
+            <i class="fas fa-flag"></i> 法国站
+        </button>
+        <button class="site-tab" data-site="de">
+            <i class="fas fa-flag"></i> 德国站
+        </button>
+    </div>
+
+    <!-- ==================== 法国站 ==================== -->
+    <div class="plans-wrapper active" id="site-fr">
+
+        <div class="plan-tabs">
+            <button class="plan-tab active" data-plan="fr-1">
+                方案一 · 旅行+换季 <span class="tag">最高优先级</span>
+            </button>
+            <button class="plan-tab" data-plan="fr-2">
+                方案二 · 搬家专用 <span class="tag">中高优先级</span>
+            </button>
+            <button class="plan-tab" data-plan="fr-3">
+                方案三 · 防潮+母婴 <span class="tag">差异化</span>
+            </button>
+        </div>
+
+        <!-- 法国站 - 方案一 -->
+        <div class="plan-detail active" id="plan-fr-1">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plane"></i> 方案一 · 旅行+换季双场景</h3>
+                    <span class="priority-badge priority-high">最高优先级</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">度假旅行者、商务出差、邮轮游客、留学生</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">城市公寓住户、换季收纳家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 评论中“旅行+换季”为最高频任务，B0GHYVTF95（12个装+多尺寸+无线泵）好评率最高</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>10个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>50×60 cm</strong>（小号）<br>
+                                3个 <strong>70×50 cm</strong>（中号）<br>
+                                3个 <strong>100×80 cm</strong>（大号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 3种尺寸组合增长最快（+60.4%），覆盖登机箱（小）+被褥（大）</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（法国站销量占比30.8%，星级4.30）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>S / M / L</strong> 标识，对应尺寸，方便用户快速识别</span></div>
+                            <div class="data-support"><i class="fas fa-print"></i> 评论中用户反馈“需要翻找尺寸”，印刷标识可提升使用体验</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE复合材料</strong>（聚酰胺+聚乙烯）</span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>100 μm</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + <strong>三重密封涡轮阀</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value"><strong>无线电动泵</strong>（USB-C充电，吸力≥-60kPa，单次充电≥50袋）</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> PA+PE销量占比53.6%，星级4.26；100μm+可满足密封持久需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.4分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 旅行+换季双场景<br>
+                                ② 无线泵+多尺寸<br>
+                                ③ 密封持久90天
+                            </span></div>
+                            <div class="detail-item"><span class="detail-label">差异化</span><span class="detail-value">密封持久 + 泵吸力升级（解决当前差评最大痛点）</span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>评论中“漏气”差评率高达38.2%，“泵吸力不足”差评率20.0%。本方案通过三重密封+吸力≥-60kPa直接解决这两个核心痛点。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 法国站 - 方案二 -->
+        <div class="plan-detail" id="plan-fr-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-truck-moving"></i> 方案二 · 搬家专用</h3>
+                    <span class="priority-badge priority-mid">中高优先级</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">搬家者、学生宿舍搬迁、长途运输者</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">大件物品存储需求家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 评论中搬家任务高频，用户对“抗撕裂”和“兼容吸尘器”有明确需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>6个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>100×80 cm</strong>（特大号）<br>
+                                2个 <strong>80×60 cm</strong>（大号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 大尺寸为主，适配被褥、衣物</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（主流配色）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>XL / L</strong> 标识</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE加厚复合材料</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>110 μm+</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + 三重密封涡轮阀</span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value"><strong>兼容吸尘器</strong> + 可选配手泵</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> 加厚材质抗撕裂，满足搬家运输需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.3分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 超厚抗撕裂<br>
+                                ② 兼容所有吸尘器<br>
+                                ③ 搬家神器
+                            </span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>评论中搬家场景用户最关注“结实抗撕裂”（差评率16.4%）和“快速抽气”。本方案通过110μm+加厚材质和兼容吸尘器解决。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 法国站 - 方案三 -->
+        <div class="plan-detail" id="plan-fr-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-shield-alt"></i> 方案三 · 防潮防虫+母婴</h3>
+                    <span class="priority-badge priority-low">差异化补充</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">地下室/车库存放者、潮湿地区住户、有新生儿的家庭</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">有虫蛀困扰的家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 评论中防潮防虫+母婴场景有明确需求，NORDIC评论提及BPA-free并愿支付溢价</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>8个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>40×50 cm</strong>（小号）<br>
+                                4个 <strong>60×80 cm</strong>（中号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 小尺寸覆盖母婴衣物；中尺寸覆盖防潮收纳</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（主流配色）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>S / M</strong> 标识 + BPA-free 标识</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE加厚复合材料</strong>，<strong>无异味</strong>，<strong>BPA-free</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>100 μm</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + 三重密封涡轮阀</span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value">无线泵/手泵可选</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> BPA-free是德国站明确需求，母婴用户对安全材质要求更高</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.5分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 食品级安全材质，BPA-free<br>
+                                ② 无异味，防潮防虫防霉<br>
+                                ③ 母婴安心使用
+                            </span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>评论中有用户反馈“异味渗入衣物”，NORDIC评论明确提及BPA-free并愿支付溢价。本方案通过无异味+BPA-free建立安全信任。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 德国站 ==================== -->
+    <div class="plans-wrapper" id="site-de">
+
+        <div class="plan-tabs">
+            <button class="plan-tab active" data-plan="de-1">
+                方案一 · 旅行+换季 <span class="tag">最高优先级</span>
+            </button>
+            <button class="plan-tab" data-plan="de-2">
+                方案二 · 搬家专用 <span class="tag">中高优先级</span>
+            </button>
+            <button class="plan-tab" data-plan="de-3">
+                方案三 · 防潮+母婴 <span class="tag">差异化</span>
+            </button>
+        </div>
+
+        <!-- 德国站 - 方案一 -->
+        <div class="plan-detail active" id="plan-de-1">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plane"></i> 方案一 · 旅行+换季双场景</h3>
+                    <span class="priority-badge priority-high">最高优先级</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">度假旅行者、商务出差、邮轮游客、留学生</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">城市公寓住户、换季收纳家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 德国站旅行+换季为最高频任务，B0DWFJ7ZP7（12个装+多尺寸+无线泵）为参考爆款</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>10个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>50×60 cm</strong>（小号）<br>
+                                3个 <strong>70×50 cm</strong>（中号）<br>
+                                3个 <strong>100×80 cm</strong>（大号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 3种尺寸组合增长最快（+51.1%），覆盖登机箱（小）+被褥（大）</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（德国站销量占比44.5%）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>S / M / L</strong> 标识</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE复合材料</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>100 μm</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + <strong>三重密封涡轮阀</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value"><strong>无线电动泵</strong>（USB-C充电，吸力≥-60kPa，单次充电≥50袋）</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> PA+PE销量占比61.8%，星级4.33；无线泵占比从7.7%升至15.0%</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.5分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 旅行+换季双场景<br>
+                                ② 无线泵+多尺寸<br>
+                                ③ 密封持久，BPA-free
+                            </span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>德国站无线泵差评率33.3%（吸力不足），本方案吸力≥-60kPa直接解决；同时BPA-free满足德国用户对安全材质的偏好。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 德国站 - 方案二 -->
+        <div class="plan-detail" id="plan-de-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-truck-moving"></i> 方案二 · 搬家专用</h3>
+                    <span class="priority-badge priority-mid">中高优先级</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">搬家者、学生宿舍搬迁、长途运输者</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">大件物品存储需求家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 德国站搬家任务高频，用户对“抗撕裂”和“兼容吸尘器”有明确需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>6个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>100×80 cm</strong>（特大号）<br>
+                                2个 <strong>80×60 cm</strong>（大号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 大尺寸为主，适配被褥、衣物</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（主流配色）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>XL / L</strong> 标识</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE加厚复合材料</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>110 μm+</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + 三重密封涡轮阀</span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value"><strong>兼容吸尘器</strong> + 可选配手泵</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> 加厚材质抗撕裂，满足搬家运输需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.3分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 超厚抗撕裂<br>
+                                ② 兼容所有吸尘器<br>
+                                ③ 搬家神器
+                            </span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>德国站搬家场景用户最关注“结实抗撕裂”（差评率16.7%）和“快速抽气”。本方案通过110μm+加厚材质和兼容吸尘器解决。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 德国站 - 方案三 -->
+        <div class="plan-detail" id="plan-de-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-shield-alt"></i> 方案三 · 防潮防虫+母婴</h3>
+                    <span class="priority-badge priority-low">差异化补充</span>
+                </div>
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-users"></i> 目标人群</h4>
+                            <div class="detail-item"><span class="detail-label">主要人群</span><span class="detail-value">地下室/车库存放者、潮湿地区住户、有新生儿的家庭</span></div>
+                            <div class="detail-item"><span class="detail-label">次要人群</span><span class="detail-value">有虫蛀困扰的家庭</span></div>
+                            <div class="data-support"><i class="fas fa-chart-line"></i> 德国站NORDIC评论明确提及BPA-free并愿支付溢价；母婴/防潮场景有明确需求</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-box"></i> 产品配置</h4>
+                            <div class="detail-item"><span class="detail-label">数量</span><span class="detail-value"><strong>8个装</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">尺寸组合</span><span class="detail-value">
+                                4个 <strong>40×50 cm</strong>（小号）<br>
+                                4个 <strong>60×80 cm</strong>（中号）
+                            </span></div>
+                            <div class="data-support"><i class="fas fa-ruler-combined"></i> 小尺寸覆盖母婴衣物；中尺寸覆盖防潮收纳</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-paint-brush"></i> 颜色与外观</h4>
+                            <div class="detail-item"><span class="detail-label">配色</span><span class="detail-value">透明袋身 + <strong>蓝色阀门/封口</strong></span></div>
+                            <div class="color-preview">
+                                <div class="color-swatch" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 50%, #2c6e9c 50%);"></div>
+                                <span class="color-text">透明+蓝（主流配色）</span>
+                            </div>
+                            <div class="detail-item" style="margin-top:1rem;"><span class="detail-label">印刷</span><span class="detail-value">袋身印刷 <strong>S / M</strong> 标识 + BPA-free 标识</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-cog"></i> 材质与工艺</h4>
+                            <div class="detail-item"><span class="detail-label">材质</span><span class="detail-value"><strong>PA+PE加厚复合材料</strong>，<strong>无异味</strong>，<strong>BPA-free</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">厚度</span><span class="detail-value"><strong>100 μm</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">封口方式</span><span class="detail-value">双拉链 + 三重密封涡轮阀</span></div>
+                            <div class="detail-item"><span class="detail-label">泵配置</span><span class="detail-value">无线泵/手泵可选</span></div>
+                            <div class="data-support"><i class="fas fa-check-circle"></i> BPA-free是德国站明确需求，母婴用户对安全材质要求更高</div>
+                        </div>
+                        <div class="detail-section">
+                            <h4><i class="fas fa-star"></i> 目标性能与卖点</h4>
+                            <div class="detail-item"><span class="detail-label">目标星级</span><span class="detail-value"><strong>4.5分</strong></span></div>
+                            <div class="detail-item"><span class="detail-label">核心卖点</span><span class="detail-value">
+                                ① 食品级安全材质，BPA-free<br>
+                                ② 无异味，防潮防虫防霉<br>
+                                ③ 母婴安心使用
+                            </span></div>
+                        </div>
+                        <div class="reason-box">
+                            <i class="fas fa-lightbulb"></i> <strong>差异化理由：</strong>德国站NORDIC评论明确提及BPA-free并愿支付溢价，本方案通过无异味+BPA-free建立安全信任。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footnote">
+        <i class="fas fa-info-circle"></i> 每个方案均基于用户任务地图与配置匹配矩阵生成，数据支撑来自法国站/德国站TOP产品与用户评论分析
+    </div>
+
+</div>
+
+<script>
+    // 站点切换
+    document.querySelectorAll('.site-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.site-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const site = this.dataset.site;
+            document.querySelectorAll('.plans-wrapper').forEach(w => w.classList.remove('active'));
+            document.getElementById('site-' + site).classList.add('active');
+        });
+    });
+
+    // 方案切换（每个站点独立）
+    document.querySelectorAll('.plan-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const planId = this.dataset.plan;
+            // 找到当前站点容器
+            const wrapper = this.closest('.plans-wrapper');
+            // 移除当前站点所有方案的高亮
+            wrapper.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            // 隐藏当前站点所有方案详情
+            wrapper.querySelectorAll('.plan-detail').forEach(d => d.classList.remove('active'));
+            // 显示目标方案
+            document.getElementById('plan-' + planId).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
